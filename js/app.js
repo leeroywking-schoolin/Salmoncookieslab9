@@ -164,7 +164,7 @@ function nameCheck(name){
       console.log("seats taken");
       var element = document.getElementById(name);
       element.parentNode.removeChild(element);
-      objList.splice[i,1];
+      objList.splice(i,1);
     }
     else{console.log('new to me')}
   }
