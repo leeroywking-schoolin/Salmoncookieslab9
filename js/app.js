@@ -32,6 +32,7 @@ LocationConstructor.prototype.randRange = function () {
 };
 LocationConstructor.prototype.render = function () {
   var newRow = document.createElement('tr');
+  newRow.id = this.rowTitle;
   newRow.textContent = ('');
   tableMain.appendChild(newRow);
   var total = 0;
@@ -53,11 +54,7 @@ LocationConstructor.prototype.render = function () {
   newRow.appendChild(liEltotal);
 };
 
-var firstAPObject = new LocationConstructor(65, 23, 6.3, 'First and Pike');
-var seaTacObject = new LocationConstructor(24, 2, 1.2, 'SeaTac Airport');
-var seaCentObject = new LocationConstructor(38, 11, 3.7, 'Seattle Center');
-var capHillObject = new LocationConstructor(38, 20, 2.3, 'Capitol Hill');
-var alkiBeachObject = new LocationConstructor(16, 2, 4.6, 'Alki');
+
 
 function tableHeadRender(headElement) {
   var blank = document.createElement('th');
@@ -94,8 +91,7 @@ function tableFootRender(footElement) {
   footElement.appendChild(entry);
   footElement.appendChild(total);
 };
-
-var objList = [firstAPObject, seaTacObject, seaCentObject, capHillObject, alkiBeachObject]
+var objList = [];
 
 function clearTotalsRow(){
   var element = document.getElementById("rowtotals");
@@ -107,22 +103,6 @@ function createTotalsRow(){
   tableMain.appendChild(newTotal);
 }
 
-
-
-function render() {
-  tableHeadRender(tablemain);
-
-  for (var i = 0; i < objList.length; i++) {
-    objList[i].render();
-  }
-  clearTotalsRow();
-  createTotalsRow();
-  tableFootRender(rowtotals);
-}
-
-render();
-
-
 function addNewStore(max, min, avg, name) {
   var newStoreObj = new LocationConstructor(max, min, avg, name);
   objList.push(newStoreObj);
@@ -132,7 +112,14 @@ function addNewStore(max, min, avg, name) {
   tableFootRender(rowtotals);
 }
 
-var newstoreList = document.getElementById('newstore-list');
+tableHeadRender(tableMain);
+addNewStore(65, 23, 6.3, 'First and Pike');
+addNewStore(24, 2, 1.2, 'SeaTac Airport');
+addNewStore(38, 11, 3.7, 'Seattle Center');
+addNewStore(38, 20, 2.3, 'Capitol Hill');
+addNewStore(16, 2, 4.6, 'Alki');
+
+// var newstoreList = document.getElementById('newstore-list');
 var newstoreForm = document.getElementById('newstore-form');
 
 Comment.prototype.render = function () {
@@ -148,6 +135,7 @@ function handleStoreSubmit(event) {
   var min = parseInt(event.target.min.value, 10);
   var avg = parseInt(event.target.avg.value, 10);
   var name = event.target.name.value;
+  nameCheck(name);
   if (max <= min || max <= 0 || min <= 0 || avg <= 0 ||
     max > 5000 || min > 5000 || avg > 5000) {
     alert('Max must be greater than min, no negative numbers; I\'m a little teapot. Don\'t fill me up.');
@@ -168,3 +156,16 @@ function handleStoreSubmit(event) {
 }
 
 newstoreForm.addEventListener('submit', handleStoreSubmit);
+
+
+function nameCheck(name){
+  for (var i = 0; objList.length > i ; i++){
+    if (objList[i].rowTitle === name){
+      console.log("seats taken");
+      var element = document.getElementById(name);
+      element.parentNode.removeChild(element);
+      objList.splice[i,1];
+    }
+    else{console.log('new to me')}
+  }
+}
