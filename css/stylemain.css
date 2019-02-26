@@ -1,0 +1,51 @@
+html{
+    display:block;
+}
+article1 img{
+    display:inline-block;
+    border-radius: 15%;
+    width: 200px;
+    padding: 10px;
+}
+a{
+    text-decoration: none;
+}
+
+#cookie{
+    transform: rotate(80deg);
+    z-index: -2;
+    width: 134px;
+    padding-left: -25px;
+    position: absolute;
+    margin-left: 37px;
+    border-radius: 60%;
+}
+
+#fisharm{ transform:rotate(86deg);
+    z-index: 1;
+    width: 217px;
+    padding-left: 170px;
+    position: absolute;
+    margin-left: -238px;
+    border-radius: 60%;}
+table{
+    border: solid rgb(226, 34, 130);
+    float: right;
+    color: rgb(80, 44, 1);
+ font-size: 35pt;
+ padding: 10px;
+}
+table td{
+    padding: 20px;
+}
+body{
+    background-color:rgb(247, 181, 174);
+}
+article4{
+    background-color: white;
+    outline-color: white;
+    width: 100px;
+    /* display: block; */
+    float: right;
+
+}
